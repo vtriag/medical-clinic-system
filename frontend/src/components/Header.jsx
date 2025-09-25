@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Logo from "../assets/images/logo.svg";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -55,18 +56,20 @@ const Header = () => {
           className="hidden space-x-4 md:flex"
           aria-label="Authentication"
         >
-          <a
-            href="#signin"
+
+          {/* BOTAO */}
+          <Link to="/login"
+            // href="#signin"
             className="px-6 py-2 text-gray-700 transition-colors duration-200 border border-gray-400 rounded hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-400"
           >
             Sign In
-          </a>
-          <a
-            href="#signup"
+          </Link>
+          <Link
+            to='/criar-paciente'
             className="px-6 py-2 text-white transition-colors duration-200 bg-blue-900 rounded shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-950 focus:ring-offset-2"
           >
-            Sign Up
-          </a>
+            Cadastrar usuario
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}

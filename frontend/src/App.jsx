@@ -5,7 +5,11 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Services from "./components/Services";
 import Contact from "./components/Cta";
-import Login from "./components/Login";
+// import Login from "./components/Login";
+import Triagem from "./components/triagem";
+import LoginMedico from "./components/LoginMedico";
+import CriarPaciente from './components/criarPaciente'
+
 
 // Layout da Home (landing page) com todas as seções
 function HomePage() {
@@ -38,9 +42,11 @@ export default function App() {
       <Routes>
         {/* Página inicial / landing page */}
         <Route path="/" element={<HomePage />} />
-
+         
+<Route path="/triagem" element={<Triagem />} />
+ <Route path="/criar-paciente" element={<CriarPaciente />} /> {/* nova rota */}
         {/* Página de login */}
-        <Route path="/login" element={<LoginPage />} />
+       <Route path="/login" element={<LoginMedico />} />
 
         {/* Redireciona qualquer URL desconhecida para a Home */}
         <Route path="*" element={<Navigate to="/" />} />

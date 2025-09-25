@@ -12,6 +12,7 @@
   "dependencies": {
     "@prisma/client": "^6.15.0",
     "@tailwindcss/vite": "^4.1.13",
+    "axios": "^1.12.2",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",

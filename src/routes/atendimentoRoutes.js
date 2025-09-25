@@ -7,8 +7,8 @@ import {
 const router = express.Router();
 
 // Somente médicos podem iniciar/finalizar atendimento
-router.post("/iniciar", protect, authorizeRoles("medico"), iniciarAtendimento);
-router.post("/finalizar/:id", protect, authorizeRoles("medico"), finalizarAtendimento);
+router.post("/iniciar", protect,  iniciarAtendimento);
+router.post("/finalizar/:id", protect,  finalizarAtendimento);
 
 // Histórico acessível a médicos e atendentes
 router.get("/historico", protect, historicoAtendimentos);

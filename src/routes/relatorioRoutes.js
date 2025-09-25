@@ -5,6 +5,6 @@ import { estatisticas } from "../controllers/relatorioController.js";
 
 const router = express.Router();
 
-router.get("/estatisticas", protect, authorizeRoles("medico", "atendente"), estatisticas);
+router.get("/estatisticas", protect,  estatisticas);
 
 export default router;

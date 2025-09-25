@@ -5,13 +5,13 @@ import { authorizeRoles } from "../middlewares/role.js";
 
 const router = express.Router();
 
-// Somente atendente pode cadastrar paciente
-router.post("/", protect, authorizeRoles("atendente"), createPaciente);
+// Somente atendente pode cadastrar paciente adicionar protect
+router.post("/",   createPaciente);
 
-// Lista fila de pacientes por prioridade
-router.get("/fila", protect, listFilaPacientes);
+// Lista fila de pacientes por prioridade // adicionar protect
+router.get("/fila",  listFilaPacientes);
 
 // Atualiza status de um paciente
-router.patch("/:id/status", protect, authorizeRoles("atendente"), updateStatusPaciente);
+router.patch("/:id/status", protect,  updateStatusPaciente);
 
 export default router;
