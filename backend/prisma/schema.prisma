@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Enum
+
+enum Prioridade {
+  VERMELHO
+  AMARELO
+  VERDE
+}
+
+enum StatusPaciente {
+  NA_FILA
+  EM_ATENDIMENTO
+  ATENDIDO
+}
+
+enum StatusAtendimento {
+  INICIADO
+  FINALIZADO
+}
+
+enum Especialidade {
+  CLINICO_GERAL
+  CARDIOLOGIA
+  PEDIATRIA
+  ORTOPEDIA
+  GINECOLOGIA
+  DERMATOLOGIA
+  NEUROLOGIA
+  PSIQUIATRIA
+  OUTRA
+}
+
+
+model Medico {
+  id            Int           @id @default(autoincrement())
+  nome          String
+  especialidade Especialidade
+  email         String        @unique
+  senha         String
+  atendimentos  Atendimento[]
+}
+
+model Atendente {
+  id        Int    @id @default(autoincrement())
+  nome      String
+  email     String @unique
+  senha     String
+}
+
+model Paciente {
+  id           Int            @id @default(autoincrement())
+  nome         String
+  motivo       String
+  prioridade   Prioridade
+  status       StatusPaciente @default(NA_FILA)
+  dataCadastro DateTime       @default(now())
+  atendimentos Atendimento[]
+}
+
+model Atendimento {
+  id         Int               @id @default(autoincrement())
+  paciente   Paciente          @relation(fields: [pacienteId], references: [id])
+  pacienteId Int
+  medico     Medico            @relation(fields: [medicoId], references: [id])
+  medicoId   Int
+  horaInicio DateTime          @default(now())
+  horaFim    DateTime?
+  status     StatusAtendimento @default(INICIADO)
+}
